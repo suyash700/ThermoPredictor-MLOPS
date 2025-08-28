@@ -21,9 +21,8 @@ Gunicorn → Production-ready WSGI server
 
 Scikit-learn + Joblib → Model training + serialization
 
-Docker (Multi-stage build + Distroless runtime)
+Docker 
 
-(Optional next steps: Docker Compose, CI/CD pipelines, Kubernetes)
 
 🧠 Problem Context
 
