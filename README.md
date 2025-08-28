@@ -1,130 +1,91 @@
-# 🔥 Electric Motor Temperature Prediction (Lite Version)
+<img width="1905" height="972" alt="Screenshot 2025-08-28 230539" src="https://github.com/user-attachments/assets/5eb6729c-34da-41f2-9c91-a536a163200e" />🔥 Electric Motor Temperature Prediction (Lite, Containerized)
 
-This project predicts the **Permanent Magnet (PM) temperature** in an electric motor using machine learning (Random Forest Regression).  
-This lightweight version is optimized for **evaluation and deployment**, trained on a **10,000-row subset** of the original dataset for faster performance and smaller model size.
+<img width="1905" height="972" alt="Screenshot 2025-08-28 230539" src="https://github.com/user-attachments/assets/188995b6-4c29-47ff-b727-04591823fb9b" />
 
----
 
-## 🚀 Tech Stack
-- Python 3.12
-- Flask (Backend Web Framework)
-- Scikit-learn (Model Training)
-- Joblib (Model Serialization)
-- HTML/CSS (Frontend)
-- VS Code (IDE)
 
----
+This project provides a containerized ML-powered web application to predict Permanent Magnet (PM) temperature in electric motors.
+It’s a lightweight version optimized for deployment, scalability, and fast evaluation.
 
-## 🧠 Problem Statement
-Electric motors generate heat during operation, and predicting the **PM temperature** helps in:
-- Avoiding overheating
-- Optimizing performance
-- Extending motor lifespan
+⚙️ Tech Stack
 
----
+Python 3.10+
 
-## 📊 Features Used for Prediction
+Flask → REST API + Web UI
 
-| Feature Name         | Description                             |
-|----------------------|-----------------------------------------|
-| `u_q`                | Voltage component in q-axis             |
-| `coolant`            | Coolant temperature (°C)                |
-| `stator_winding`     | Stator winding temperature (°C)         |
-| `u_d`                | Voltage component in d-axis             |
-| `stator_tooth`       | Stator tooth temperature (°C)           |
-| `motor_speed`        | Motor speed (rpm)                       |
-| `i_d`                | Current in d-axis                       |
-| `i_q`                | Current in q-axis                       |
-| `stator_yoke`        | Stator yoke temperature (°C)            |
-| `ambient`            | Ambient temperature (°C)                |
-| `torque`             | Motor torque (Nm)                       |
+Gunicorn → Production-ready WSGI server
 
-The model predicts: **`pm` – Permanent Magnet temperature (°C)**
+Scikit-learn + Joblib → Model training + serialization
 
----
+Docker (Multi-stage build + Distroless runtime)
 
-## 🏗️ Project Structure
+(Optional next steps: Docker Compose, CI/CD pipelines, Kubernetes)
 
-```
+🧠 Problem Context
+
+Monitoring motor PM temperature helps with:
+
+Preventing overheating 🚨
+
+Improving efficiency ⚡
+
+Extending motor lifetime 🔧
+
+This service exposes a prediction API + UI form to make live inferences.
+
+📊 Model Features
+| Feature         | Description                     |
+| --------------- | ------------------------------- |
+| u\_q            | Voltage component (q-axis)      |
+| coolant         | Coolant temperature (°C)        |
+| stator\_winding | Stator winding temperature (°C) |
+| u\_d            | Voltage component (d-axis)      |
+| stator\_tooth   | Stator tooth temperature (°C)   |
+| motor\_speed    | Motor speed (rpm)               |
+| i\_d            | Current in d-axis               |
+| i\_q            | Current in q-axis               |
+| stator\_yoke    | Stator yoke temperature (°C)    |
+| ambient         | Ambient temperature (°C)        |
+| torque          | Motor torque (Nm)               |
+
+
+✅ Output → pm (Permanent Magnet temperature, °C)
+
+🏗️ Project Layout
 ElectricMotorTempPrediction_Lite/
-├── app.py                         # Flask application
-├── model/
-│   └── model.save                # Trained ML model (included)
-├── templates/
-│   ├── index.html                # Input form
-│   └── result.html               # Result display
-├── static/
-│   └── css/
-│       └── style.css             # Optional: UI styling
-├── notebook/
-│   └── Rotor_motor_temp_detection.ipynb  # Model training
-├── data_small.csv               # 10,000-row training dataset
-├── requirement.txt              # Python dependencies
-└── README.md                    # You’re here!
-```
+├── app.py                   # Flask + Gunicorn app
+├── model/model.save         # Pre-trained Random Forest model
+├── templates/               # Frontend (Jinja2 templates)
+├── static/css/style.css     # UI styling
+├── notebook/                # EDA + training (not required at runtime)
+├── data_small.csv           # Subset dataset (10k rows)
+├── requirements.txt         # Python dependencies
+├── Dockerfile               # (Containerized)
+└── README.md                # This file
 
----
+🔹 Dockerized
 
-## 📦 Installation & Running
+1. ON your Browser search: Docker install 
+2. Add user to docker group
+   sudo usermod -aG docker ubuntu
+3. newgrp docker
+   
+Build image:
+docker build -t motor-temp-predictor .
 
-### ✅ Step 1: Clone the Repository
+## Expose port 8000 on ec2 server
 
-```bash
-git clone https://github.com/ketan1819/ThermoPredictor.git
-cd ThermoPredictor
-```
+Run container:
+docker run -d -p 8000:8000 motor-temp-predictor
+http://<ec2-ip>:8000
 
-### ✅ Step 2: Install Dependencies
+<img width="1482" height="369" alt="Screenshot 2025-08-28 233744" src="https://github.com/user-attachments/assets/8f38df1f-9906-4cce-87b0-c5fcd22c8a59" />
 
-```bash
-pip install -r requirement.txt
-```
+<img width="1912" height="955" alt="Screenshot 2025-08-28 230442" src="https://github.com/user-attachments/assets/d98cb1ff-581b-45ed-8685-adfa9a9b2c79" />
 
-### ✅ Step 3: Run the Flask App
-
-```bash
-python app.py
-```
-
-Then go to `http://127.0.0.1:5000/` in your browser.
-
----
+<img width="1663" height="882" alt="Screenshot 2025-08-28 230501" src="https://github.com/user-attachments/assets/049ca99a-e4fe-4d7d-a6d3-1076fd88af9d" />
 
 
-
-
-
----
-
-## 📁 Dataset Info
-
-The original dataset contains 100,000+ rows.  
-This version uses a 10,000-row subset for efficient local training and deployment.
-
----
-
-## 🧠 Model Info
-
-- Algorithm: Random Forest Regressor
-- Training Set Size: 10,000 rows
-- Output: PM Temperature (`pm`)
-- Accuracy: _(0.992)_
-
----
-
-## ✍️ Author
-
-- **Your Name**  
-- Ketan Sonawane
-
----
-
-## ✅ Submission Notes
-
-This version:
-- Includes a trained model (`model/model.save`)
-- Does **not** depend on Google Drive or gdown
-- Works **entirely offline**
-- Suitable for quick demo and academic evaluation
-
----
+✍️ Author
+👤 Suyash Dahitule
+DevOps Engineer in progress 🚀
