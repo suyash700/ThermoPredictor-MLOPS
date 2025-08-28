@@ -1,4 +1,6 @@
-<img width="1905" height="972" alt="Screenshot 2025-08-28 230539" src="https://github.com/user-attachments/assets/5eb6729c-34da-41f2-9c91-a536a163200e" />🔥 Electric Motor Temperature Prediction (Lite, Containerized)
+## Electric Motor Temperature Prediction (Lite, Containerized)
+
+<img width="1905" height="972" alt="Screenshot 2025-08-28 230539" src="https://github.com/user-attachments/assets/5eb6729c-34da-41f2-9c91-a536a163200e" />🔥 
 
 <img width="1905" height="972" alt="Screenshot 2025-08-28 230539" src="https://github.com/user-attachments/assets/188995b6-4c29-47ff-b727-04591823fb9b" />
 
