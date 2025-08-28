@@ -1,4 +1,7 @@
-## Electric Motor Temperature Prediction (Lite, Containerized)
+## Electric Motor Temperature Prediction (Lite, Containerized) [ML-OPS]
+
+This project provides a containerized ML-powered web application to predict Permanent Magnet (PM) temperature in electric motors.
+It’s a lightweight version optimized for deployment, scalability, and fast evaluation.
 
 <img width="1905" height="972" alt="Screenshot 2025-08-28 230539" src="https://github.com/user-attachments/assets/5eb6729c-34da-41f2-9c91-a536a163200e" />🔥 
 
@@ -6,8 +9,7 @@
 
 
 
-This project provides a containerized ML-powered web application to predict Permanent Magnet (PM) temperature in electric motors.
-It’s a lightweight version optimized for deployment, scalability, and fast evaluation.
+
 
 ⚙️ Tech Stack
 
